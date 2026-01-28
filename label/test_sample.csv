@@ -1,0 +1,5 @@
+﻿Site,Date,ThermalTime(℃ d),Stage,Cultivar,Plot,Treatment,Replicate,GAI,TT_Norm
+Xuzhou,2021/3/17,592.62,Jointing,V4,46,N2,1,2.220131476,0.357232
+Xuzhou,2021/4/8,860.84,Booting,V1,12,N3,1,4.601446744,0.596236
+France,2018/3/14,569.26,Tillering,ANVERGUR,108,Irrigation,,0.965921658,0.336416
+France,2018/4/18,823.92,Jointing,Vadio,311,Irrigation,,3.225577715,0.563338

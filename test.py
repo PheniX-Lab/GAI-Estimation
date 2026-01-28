@@ -3,7 +3,10 @@ import sys
 import einops
 import time
 import torch
+import torch.nn as nn
 from data.data import testDataset
+from torch.utils.data import DataLoader
+from torchvision.transforms import ToTensor
 from model.models import model_vit1
 import numpy as np
 import pandas as pd
@@ -13,11 +16,11 @@ gpus = [0]
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 def main():
-    model_dict = torch.load(r'./output/models/GAI_vit2.pth')
+    model_dict = torch.load(r'./output/models/GAI_vit1.pth')
     model = model_vit1()
     model.load_state_dict(model_dict['model'])
     model.to(device)
-    valImageDataset = testDataset(annotationsFile = "label/test.csv",imgDir = "images/test",angle = 450,
+    valImageDataset = testDataset(annotationsFile = "label/test_sample.csv",imgDir = "images/test",angle = 450,
         transform=ToTensor(),time = True)
     valDataLoader = DataLoader(valImageDataset,batch_size=4,shuffle = True)
     model.eval()

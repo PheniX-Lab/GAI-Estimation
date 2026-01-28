@@ -1,3 +1,5 @@
+import torch
+from torch import nn
 import pandas as pd
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
@@ -265,11 +267,17 @@ class testDataset(Dataset):
                 j += 1
 
         elif site == 'Xuzhou':
-            img_path_0 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_0/'+month+day+'-'+year+month+day+'-'+plot+'#'+str(Nitrogen)+'-rep2-DSC-RX045.jpg')
-            img_path_45 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_45/'+month+day+'-'+year+month+day+'-'+plot+'#'+str(Nitrogen)+'-rep2-DSC-RX0.jpg')
+            i=0
+            j=0
+            while (not (os.path.exists(img_path_0)) and i<10):
+                img_path_0 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_0/'+'Xuzhou-'+year+month+day+'-'+Cultivar+Nitrogen+'-rep'+str(i)+'-DSC-RX0r.png')
+                i += 1
+            while (not (os.path.exists(img_path_45)) and j<10):
+                img_path_45 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_45/'+'Xuzhou-'+year+month+day+'-'+Cultivar+Nitrogen+'-rep'+str(j)+'-DSC-RX045.png')
+                j += 1
             if (not os.path.exists(img_path_0)):
-                img_path_0 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_45/'+str(int(float(plot)))+'-'+str(int(float(Replicate)))+'.jpg')
-                img_path_45 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_45/'+str(int(float(plot)))+'-'+str(int(float(Replicate)))+'.jpg')
+                img_path_0 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_0/'+Cultivar+Nitrogen+'-rep0-DSC-RX0r.JPG')
+                img_path_45 = os.path.join(self.img_dir,site+'/'+year+'_'+month+'_'+day+'_45/'+Cultivar+Nitrogen+'-rep0-DSC-RX045.JPG')       
         
         elif site == 'France':
             i=0

@@ -3,8 +3,13 @@ import sys
 import einops
 import time
 import torch
+import torch.nn as nn
 from data.data import realDataset
+from torchvision.transforms import ToTensor
+from torch.utils.data import DataLoader
 from model.models import model_vit1
+import numpy as np
+import pandas as pd
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 gpus = [0]
