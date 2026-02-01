@@ -41,10 +41,11 @@ class model_vit2(torch.nn.Module):
         self.time = 0
         self.head = nn.Sequential(
             nn.Linear(1025,512),
-            nn.ReLU(),
+            nn.Softplus(),
             nn.Linear(512,256),
-            nn.ReLU(),
-            nn.Linear(256,1)
+            nn.Softplus(),
+            nn.Linear(256,1),
+            nn.Softplus()
         )
 
     def forward_features(self, x):
